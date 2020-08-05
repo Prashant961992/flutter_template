@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:template/ui/home_screen.dart';
 import 'package:template/ui/login_screen.dart';
 import 'package:template/utils/utils.dart';
 import 'localization/app_localization.dart';
@@ -9,25 +10,29 @@ void main() {
   runApp(MyApp());
 }
 
-// /// Initializes required data
-// init() async {
-//   await AppManager.initSharedPreference();
-//   Widget _defaultWidget = getDefaultWidget();
-//   runApp(MyApp(defaultWidget: _defaultWidget));
-// }
+// Initializes required data
+init() async {
+  await AppManager.initSharedPreference();
+  Widget _defaultWidget = getDefaultWidget();
+  runApp(MyApp(defaultWidget: _defaultWidget));
+}
 
-// /// Redirects to home screen
-// Widget getDefaultWidget() {
-//   Widget _defaultWidget = new LoginScreen();
-//   if (AppManager.instance.sharedPreferenceRepository.isLoggedIn()) {
-//     _defaultWidget = new MyTeamScreen();
-//   } else {
-//     _defaultWidget = new LoginScreen();
-//   }
-//   return _defaultWidget;
-// }
+/// Redirects to home screen
+Widget getDefaultWidget() {
+  Widget _defaultWidget = new LoginScreen();
+  if (AppManager.instance.sharedPreferenceRepository.isLoggedIn()) {
+    _defaultWidget = new HomeScreen();
+  } else {
+    _defaultWidget = new LoginScreen();
+  }
+  return _defaultWidget;
+}
 
 class MyApp extends StatefulWidget {
+  final Widget defaultWidget;
+
+  MyApp({this.defaultWidget});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -94,7 +99,21 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: themeColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      // routes: <String, WidgetBuilder>{
+      //     getRoute(Routes.login): (BuildContext context) => new LoginScreen(),
+      //     getRoute(Routes.forgot_password): (BuildContext context) =>
+      //         new ForgotPasswordScreen(),
+          
+      //     getRoute(Routes.team_details_list): (BuildContext context) =>
+      //         new TeamDetailsListScreen(),
+      //     getRoute(Routes.team_information): (BuildContext context) =>
+      //         new TeamInformationScreen(),
+      //     getRoute(Routes.profile): (BuildContext context) =>
+      //         new ProfileScreen(),
+      //     getRoute(Routes.new_journal): (BuildContext context) =>
+      //         new NewJournalScreen(),
+      //   },
+      home: widget.defaultWidget,
     );
   }
 }
