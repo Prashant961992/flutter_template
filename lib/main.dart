@@ -1,4 +1,5 @@
 import 'index.dart';
+import 'dart:ui' as ui;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,54 +34,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // AppTranslationsDelegate _newLocaleDelegate;
-
+ 
   @override
   void initState() {
     super.initState();
-    // _newLocaleDelegate = AppTranslationsDelegate(newLocale: Locale("en", ""));
-    // // application.onLocaleChanged = onLocaleChange;
-    // onLocaleChange(Locale('en'));
+    // AppLocalizations.delegate.load(Locale('en'));
   }
-
-  // void onLocaleChange(Locale locale) {
-  //   setState(() {
-  //     _newLocaleDelegate = AppTranslationsDelegate(newLocale: locale);
-  //   });
-  // }
-
-  // Code When change App Locale
-  // void onLocaleChange(Locale locale) async {
-  //   setState(() {
-  //     AppLocalizations.load(locale);
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-//       builder: (BuildContext context, Widget widget) {
-// //         ['ar', // Arabic 'fa', // Farsi 'he', // Hebrew 'ps', // Pashto 'ur', // Urdu];
-//         var language = AppLocalizations.of(context).currentLanguage;
-//         // var _sysLng = ui.window.locale.languageCode; // Get System Language
-//         // print(_sysLng);
-//         if (language == 'ar' ||
-//             language == 'fa' ||
-//             language == 'he' ||
-//             language == 'ps' ||
-//             language == 'ur') {
-//           return Directionality(
-//             textDirection: TextDirection.rtl,
-//             child: widget,
-//           );
-//         } else {
-//           return Directionality(
-//             textDirection: TextDirection.ltr,
-//             child: widget,
-//           );
-//         }
-//       },
+      builder: (BuildContext context, Widget widget) {
+//         ['ar', // Arabic 'fa', // Farsi 'he', // Hebrew 'ps', // Pashto 'ur', // Urdu];
+        // var language = AppLocalizations.of(context).currentLanguage;
+        var language = ui.window.locale.languageCode; // Get System Language
+        print(language);
+        if (language == 'ar' ||
+            language == 'fa' ||
+            language == 'he' ||
+            language == 'ps' ||
+            language == 'ur') {
+          return Directionality(
+            textDirection: TextDirection.rtl,
+            child: widget,
+          );
+        } else {
+          return Directionality(
+            textDirection: TextDirection.ltr,
+            child: widget,
+          );
+        }
+      },
       supportedLocales: [
         Locale('en', 'US'),
       ],
