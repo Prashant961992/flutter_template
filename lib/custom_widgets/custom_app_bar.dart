@@ -1,7 +1,6 @@
-import '../utils/colors.dart';
-import '../utils/styles.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/cupertino.dart';
+import '../index.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;

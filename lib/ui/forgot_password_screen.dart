@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:template/custom_widgets/custom_app_bar.dart';
-import 'package:template/custom_widgets/custom_raised_button.dart';
-import 'package:template/custom_widgets/custom_text_form_field.dart';
-import 'package:template/localization/app_localization.dart';
-import '../utils/utils.dart';
+import '../index.dart';
 
 
 class ForgotPasswordScreen extends StatelessWidget {

@@ -1,7 +1,4 @@
-import 'dart:convert';
-import '../models/api_models/login/LoginResponse.dart';
-import '../utils/app_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../index.dart';
 
 final _preferenceKeyLoggedIn = "keyLoggedIn";
 final _preferenceKeyLoginResponse = "keyLoginResponse";

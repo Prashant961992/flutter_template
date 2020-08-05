@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import '../index.dart';
 
 Color green = Color.fromARGB(255, 82, 163, 24);
 Color white = Color.fromARGB(255, 255, 255, 255);

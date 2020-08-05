@@ -1,10 +1,4 @@
-import 'dart:convert';
-import '../localization/app_localization.dart';
-import '../utils/colors.dart';
-import '../utils/dimens.dart';
-import '../utils/styles.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import '../index.dart';
 
 /// Shows DatePicker
 Future<DateTime> showDatePickerView(

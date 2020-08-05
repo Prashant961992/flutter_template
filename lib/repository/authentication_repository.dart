@@ -1,7 +1,4 @@
-import '../network/api_provider.dart';
-
-import '../models/api_models/login/LoginRequest.dart';
-import '../models/api_models/login/LoginResponse.dart';
+import '../index.dart';
 
 class AuthenticationRepository {
   final baseApiProvider = ApiProvider();

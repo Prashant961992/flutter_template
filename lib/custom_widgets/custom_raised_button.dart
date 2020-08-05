@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'custom_widgets.dart';
+import '../index.dart';
 
 class CustomRaisedButton extends StatefulWidget {
   final String text;

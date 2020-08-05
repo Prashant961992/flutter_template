@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template/bloc/authentication/login_bloc.dart';
-import 'package:template/custom_widgets/custom_raised_button.dart';
-import 'package:template/custom_widgets/custom_text_form_field.dart';
-import 'package:template/localization/app_localization.dart';
-import 'package:template/states/api_error_state.dart';
-import 'package:template/states/api_state.dart';
-import 'package:template/utils/app_manager.dart';
-import 'package:template/utils/colors.dart';
-import 'package:template/utils/commons.dart';
-import 'package:template/utils/dimens.dart';
-import 'package:template/utils/routes.dart';
-import 'package:template/utils/styles.dart';
+import '../index.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({

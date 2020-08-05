@@ -1,6 +1,5 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:template/repository/authentication_repository.dart';
-import 'package:template/states/api_state.dart';
+import '../index.dart';
 
 class HomeBloc {
   AuthenticationRepository _authenticationRepository =

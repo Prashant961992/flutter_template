@@ -1,4 +1,4 @@
-import '../states/base_state.dart';
+import 'base_state.dart';
 
 enum ApiStatus { LOADING, SUCCESS, FAIL }
 

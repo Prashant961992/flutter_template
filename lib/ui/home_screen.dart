@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:template/bloc/authentication/home_bloc.dart';
+import '../index.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({

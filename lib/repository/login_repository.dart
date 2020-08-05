@@ -1,9 +1,4 @@
-import 'package:template/models/api_models/posts/poste.dart';
-
-import '../network/api_provider.dart';
-
-import '../models/api_models/login/LoginRequest.dart';
-import '../models/api_models/login/LoginResponse.dart';
+import '../index.dart';
 
 class LoginRepository {
   final baseApiProvider = ApiProvider();

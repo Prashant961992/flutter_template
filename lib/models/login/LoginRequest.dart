@@ -1,4 +1,4 @@
-import 'dart:convert';
+import '../../index.dart';
 
 LoginRequest loginRequestFromJson(String str) =>
     LoginRequest.fromJson(json.decode(str));

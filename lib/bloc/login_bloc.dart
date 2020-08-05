@@ -1,9 +1,5 @@
-import 'package:template/models/api_models/login/LoginRequest.dart';
-import 'package:template/models/api_models/login/LoginResponse.dart';
-import 'package:template/repository/authentication_repository.dart';
-import 'package:template/states/api_state.dart';
-
 import 'package:rxdart/rxdart.dart';
+import '../index.dart';
 
 class LoginBloc {
   AuthenticationRepository _authenticationRepository =
