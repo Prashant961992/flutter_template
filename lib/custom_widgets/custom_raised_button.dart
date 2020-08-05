@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'custom_widgets.dart';
 
 class CustomRaisedButton extends StatefulWidget {
   final String text;
@@ -25,8 +26,6 @@ class CustomRaisedButton extends StatefulWidget {
   @override
   _CustomRaisedButton createState() => new _CustomRaisedButton();
 }
-
-typedef VoidNavigate = void Function(BuildContext context);
 
 class _CustomRaisedButton extends State<CustomRaisedButton> {
 

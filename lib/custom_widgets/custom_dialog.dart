@@ -1,7 +1,6 @@
-import '../utils/dimens.dart';
-import '../utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:template/utils/utils.dart';
 
 class CustomDialog extends StatefulWidget {
   final BuildContext context;

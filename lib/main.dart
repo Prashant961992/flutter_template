@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:template/ui/login/login_screen.dart';
-import 'package:template/utils/colors.dart';
-
+import 'package:template/ui/login_screen.dart';
+import 'package:template/utils/utils.dart';
 import 'localization/app_localization.dart';
 
 void main() {
