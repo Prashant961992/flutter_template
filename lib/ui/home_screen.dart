@@ -1,3 +1,5 @@
+import 'package:flutter/gestures.dart';
+
 import '../index.dart';
 
 class HomeScreenArguments {
@@ -10,9 +12,7 @@ class HomeScreenArguments {
 class HomeScreen extends StatefulWidget {
   final HomeScreenArguments arguments;
 
-  const HomeScreen({
-    Key key,this.arguments
-  }) : super(key: key);
+  const HomeScreen({Key key, this.arguments}) : super(key: key);
 
   @override
   HomeScreenState createState() {
@@ -22,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   final HomeBloc _homeBloc = HomeBloc();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -38,8 +39,9 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.arguments.title),
+      key: _scaffoldKey,
+      appBar: CustomAppBar(
+        title: "Hello",
       ),
       body: Center(
         child: Column(

@@ -18,6 +18,8 @@ export './custom_widgets/custom_flat_button.dart';
 export './custom_widgets/custom_raised_button.dart';
 export './custom_widgets/custom_switch.dart';
 export './custom_widgets/custom_text_form_field.dart';
+export './custom_widgets/error_widgets.dart';
+export './custom_widgets/loading_widgets.dart';
 
 // localization
 export './localization/app_localization.dart';

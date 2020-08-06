@@ -122,5 +122,6 @@
   "please_wait": "Please Wait...",
   "username_or_password_incorrect": "Username or Password is incorrect",
   "log_off": "LogOff",
-  "verify_email": "Success! Please check your email to verify account"
+  "verify_email": "Success! Please check your email to verify account",
+  "key_retry": "Retry"
 }

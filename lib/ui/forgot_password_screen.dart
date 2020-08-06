@@ -9,7 +9,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     AppLocalizations _localizations = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: CustomAppBar(_localizations.translate("forgot_password_title")),
+      appBar: CustomAppBar(title: _localizations.translate("forgot_password_title")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(margin),
         child: Column(

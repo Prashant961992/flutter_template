@@ -13,12 +13,12 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   bool showLeadingMenuButton = false;
   Widget leadingWidget;
 
-  CustomAppBar(this.title,
-      [this.isShowMenuButton,
+  CustomAppBar({this.title,
+      this.isShowMenuButton,
       this.children,
       this.showBack,
       this.showLeadingMenuButton,
-      this.leadingWidget]);
+      this.leadingWidget});
 
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
