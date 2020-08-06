@@ -17,7 +17,10 @@ init() async {
 Widget getDefaultWidget() {
   Widget _defaultWidget = new LoginScreen();
   if (AppManager.instance.sharedPreferenceRepository.isLoggedIn()) {
-    _defaultWidget = new HomeScreen();
+    _defaultWidget = new HomeScreen(arguments: HomeScreenArguments(
+      title: "",
+      message: ""
+    ));
   } else {
     _defaultWidget = new LoginScreen();
   }
@@ -79,20 +82,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: themeColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // routes: <String, WidgetBuilder>{
-      //     getRoute(Routes.login): (BuildContext context) => new LoginScreen(),
-      //     getRoute(Routes.forgot_password): (BuildContext context) =>
-      //         new ForgotPasswordScreen(),
-          
-      //     getRoute(Routes.team_details_list): (BuildContext context) =>
-      //         new TeamDetailsListScreen(),
-      //     getRoute(Routes.team_information): (BuildContext context) =>
-      //         new TeamInformationScreen(),
-      //     getRoute(Routes.profile): (BuildContext context) =>
-      //         new ProfileScreen(),
-      //     getRoute(Routes.new_journal): (BuildContext context) =>
-      //         new NewJournalScreen(),
-      //   },
+      onGenerateRoute: Routes.generateRoute,
       home: widget.defaultWidget,
     );
   }

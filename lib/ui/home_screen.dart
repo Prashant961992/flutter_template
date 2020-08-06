@@ -1,8 +1,17 @@
 import '../index.dart';
 
+class HomeScreenArguments {
+  final String title;
+  final String message;
+
+  HomeScreenArguments({this.title, this.message});
+}
+
 class HomeScreen extends StatefulWidget {
+  final HomeScreenArguments arguments;
+
   const HomeScreen({
-    Key key,
+    Key key,this.arguments
   }) : super(key: key);
 
   @override
@@ -29,6 +38,9 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.arguments.title),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

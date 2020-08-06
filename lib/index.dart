@@ -51,6 +51,9 @@ export './utils/app_manager.dart';
 export './utils/colors.dart';
 export './utils/commons.dart';
 export './utils/dimens.dart';
-export './utils/routes.dart';
+export 'routes.dart';
 export './utils/styles.dart';
-
+export './utils/images.dart';
+export './utils/decorations.dart';
+export './utils/gradients.dart';
+export './utils/shadows.dart';

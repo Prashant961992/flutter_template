@@ -46,7 +46,14 @@ class LoginScreenState extends State<LoginScreen> {
             AppManager.instance.sharedPreferenceRepository
                 .saveLoginResponse(state.response);
           }
-          Navigator.pushReplacementNamed(context, getRoute(Routes.my_team));
+          init();
+          // Navigator.pushNamed(context, homeScreen,arguments: 
+          // HomeScreenArguments(
+          //   title: "CC",
+          //   message: "Lorem ipsum",
+          // ));
+          Navigator.popUntil(context, ModalRoute.withName(loginScreen));
+          // Navigator.pushReplacementNamed(context, getRoute(Routes.my_team));
         }
       }
     });
