@@ -52,7 +52,6 @@ class LoginScreenState extends State<LoginScreen> {
           //   title: "CC",
           //   message: "Lorem ipsum",
           // ));
-          Navigator.popUntil(context, ModalRoute.withName(loginScreen));
           // Navigator.pushReplacementNamed(context, getRoute(Routes.my_team));
         }
       }
@@ -68,96 +67,154 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations _localizations = AppLocalizations.of(context);
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(margin),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    _localizations.translate('login_heading'),
-                    style: green20BoldTextStyle(),
-                  ),
-                  SizedBox(height: 30.0),
-                  Image.asset("images/logo.png", width: 150.0, height: 150.0),
-                  SizedBox(height: 20.0),
-                  CustomTextFormField(
-                    label: _localizations.translate('username'),
-                    labelStyle: green16TextStyle(),
-                    keyboardType: TextInputType.text,
-                    obscureText: false,
-                    showPasswordToggleIcon: false,
-                    controller: _usernameController,
-                  ),
-                  SizedBox(height: 8.0),
-                  CustomTextFormField(
-                    label: _localizations.translate("password"),
-                    labelStyle: green16TextStyle(),
-                    keyboardType: TextInputType.text,
-                    obscureText: true,
-                    showPasswordToggleIcon: true,
-                    controller: _passwordController,
-                  ),
-                  SizedBox(height: 8.0),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: FlatButton(
-                      padding: EdgeInsets.all(0),
-                      color: Colors.transparent,
-                      onPressed: () {
-                        // _onForgotPwdPressed(context);
-                      },
-                      child: Text(
-                        _localizations.translate("forgot_password"),
-                        style: green16TextStyle(),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 8.0),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: CustomLabelCheckBox(
-                        label: _localizations.translate("remember_me"),
-                        labelStyle: green16TextStyle(),
-                        onChanged: (bool newValue) {
-                          print("$newValue");
-                          rememberMe = newValue;
-                        }),
-                  ),
-                  SizedBox(height: 16.0),
-                  SizedBox(
-                    width: double.infinity,
-                    child: CustomRaisedButton(
-                      text: _localizations.translate("log_in"),
-                      buttonColor: green,
-                      textColor: white,
-                      borderRadius: 8.0,
-                      fontSize: 20.0,
-                      onCustomButtonPressed: _onLogInPressed,
-                      context: context,
-                    ),
-                  ),
-                  SizedBox(height: 16.0),
-                ],
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(gradient: Gradients.backgroundGredient),
+        child: Column(
+          children: [
+            Container(
+              height: 60,
+              color: Colors.transparent,
+            ),
+            Flexible(
+              flex: 2,
+              child: Center(
+                child: Container(
+                  margin: EdgeInsets.only(top: 40, bottom: 40),
+                  decoration: BoxDecoration(
+                      color: Colors.white, shape: BoxShape.circle),
+                  child: Image.asset(ImagePath.logo),
+                ),
               ),
             ),
-          ),
-        ),
-        bottomNavigationBar: FlatButton(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
-          color: Colors.transparent,
-          onPressed: () {},
-          child: Text(
-            _localizations.translate("not_a_member_register_here"),
-            style: green16TextStyle(),
-          ),
+            Flexible(
+              flex: 4,
+              child: SizedBox(
+                width: double.infinity,
+                // height: double.infinity,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 26, right: 26),
+                      child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: new BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      elevation: 5,
+                      margin: EdgeInsets.only(
+                          left: 20, right: 20, top: 10, bottom: 40),
+                      color: Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Login", style: black18TextStyle()),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: left_right_padding,
+                                right: left_right_padding),
+                            child: CustomTextFormField(
+                              controller: _usernameController,
+                              label: "Email Id",
+                              keyboardType: TextInputType.emailAddress,
+                              obscureText: false,
+                            ),
+                          ),
+                          // SizedBox(height: vartical_space),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: left_right_padding,
+                                right: left_right_padding),
+                            child: CustomTextFormField(
+                              controller: _passwordController,
+                              label: "Password",
+                              keyboardType: TextInputType.text,
+                              obscureText: true,
+                              showPasswordToggleIcon: true,
+                            ),
+                          ),
+                          SizedBox(height: 14),
+                          Padding(
+                            padding: EdgeInsets.only(left: left_right_padding),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: CustomLabelCheckBox(
+                                  label:
+                                      _localizations.translate("remember_me"),
+                                  labelStyle: black16TextStyle(),
+                                  onChanged: (bool newValue) {
+                                    rememberMe = newValue;
+                                  }),
+                            ),
+                          ),
+                          // SizedBox(height: vartical_space),
+                          FlatButton(
+                            padding: EdgeInsets.all(0),
+                            color: Colors.transparent,
+                            onPressed: () {
+                              onForgotPwdPressed(context);
+                            },
+                            child: Text(
+                              _localizations.translate("forgot_password"),
+                              style: black16TextStyle(),
+                            ),
+                          ),
+                          // SizedBox(height: vartical_space),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: left_right_padding,
+                                  right: left_right_padding),
+                              child: CustomFlatButton(
+                                text: _localizations.translate("log_in"),
+                                textStyle: white18TextStyle(),
+                                borderRadius: 20,
+                                onButtonPressed: () {
+                                  _onLogInPressed(context);
+                                },
+                              ),
+                            ),
+                          ),
+                          // SizedBox(height: vartical_space),
+                          FlatButton(
+                            color: Colors.transparent,
+                            onPressed: () {
+                              onRegisterPressed(context);
+                            },
+                            child: Text(
+                              _localizations
+                                  .translate("not_a_member_register_here"),
+                              style: black16TextStyle(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
+  }
+  
+  void onForgotPwdPressed(BuildContext context) {
+    Navigator.pushNamed(context, forgotPasswordScreen);
+  }
+
+  void onRegisterPressed(BuildContext context) {
+    Navigator.pushNamed(context, signupscreeen);
   }
 
   void _onLogInPressed(BuildContext context) {

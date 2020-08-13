@@ -1,6 +1,26 @@
 import '../index.dart';
 
 class Gradients {
+  static const Gradient backgroundGredient = LinearGradient(
+    colors: [
+      const Color(0xFF00CCFF),
+      const Color(0xFF3366FF),
+    ],
+    begin: const FractionalOffset(0.0, 0.0),
+    end: const FractionalOffset(1.0, 0.0),
+    stops: [0.0, 1.0],
+  );
+
+  static const Gradient flatButtonGredient = LinearGradient(
+    colors: [
+      const Color(0xFF00CCFF),
+      const Color(0xFF3366FF),
+    ],
+    begin: const FractionalOffset(0.0, 0.0),
+    end: const FractionalOffset(1.0, 0.0),
+    stops: [0.0, 1.0],
+  );
+  
   static const Gradient primaryGradient = LinearGradient(
     begin: Alignment(0.5, 1),
     end: Alignment(0.51711, -0.06443),

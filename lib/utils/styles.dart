@@ -1,12 +1,16 @@
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
 
+TextStyle loginLogoTextStyle() {
+  return TextStyle(color: black, fontSize: 100);
+}
+
 TextStyle green16TextStyle() {
-  return TextStyle(color: green, fontSize: 16);
+  return TextStyle(color: primarythemeColor, fontSize: 16);
 }
 
 TextStyle green20BoldTextStyle() {
-  return TextStyle(color: green, fontSize: 20, fontWeight: FontWeight.bold);
+  return TextStyle(color: primarythemeColor, fontSize: 20, fontWeight: FontWeight.bold);
 }
 
 TextStyle black16BoldTextStyle() {

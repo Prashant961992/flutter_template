@@ -12,6 +12,9 @@ class Shadows {
     offset: Offset(0, 3.33333),
     blurRadius: 33,
   );
-
+  
+  static const List<BoxShadow> flatButtonshadow = [
+    BoxShadow(color: Colors.grey, blurRadius: 5.0)
+  ];
 
 }

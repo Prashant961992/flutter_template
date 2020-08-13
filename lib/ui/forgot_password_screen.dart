@@ -16,7 +16,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset("images/logo.png", width: 150.0, height: 150.0),
+            Image.asset(ImagePath.logo, width: 150.0, height: 150.0),
             SizedBox(height: 20.0),
             CustomTextFormField(
               label: _localizations.translate("email"),
@@ -31,7 +31,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               width: double.infinity,
               child: CustomRaisedButton(
                 text: _localizations.translate("send_email"),
-                buttonColor: green,
+                buttonColor: primarythemeColor,
                 textColor: white,
                 borderRadius: 8.0,
                 fontSize: 20.0,

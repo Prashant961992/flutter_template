@@ -33,7 +33,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return new TextFormField(
-      cursorColor: green,
+      cursorColor: primarythemeColor,
       maxLines: widget.maxLines,
       autofocus: false,
       keyboardType: widget.keyboardType,
@@ -57,7 +57,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 : IconButton(
                     icon: Icon(
                       Icons.remove_red_eye,
-                      color: green,
+                      color: primarythemeColor,
                     ),
                     onPressed: () {
                       setState(() => widget.obscureText = !widget.obscureText);
@@ -78,61 +78,3 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     );
   }
 }
-
-
-// class CustomtextField extends StatelessWidget {
-//   final String hinttext;
-//   final FormFieldValidator<String> validator;
-//   final TextEditingController controller;
-//   final bool isSecuretext;
-//   final TextInputType keyboardType;
-//   final bool isShowsuffixIcon;
-//   final bool enabled;
-//   final String initvalue;
-//   final TextInputAction textInputAction;
-//   final Function(String) onFieldSubmitted;
-//   final VoidCallback onTap;
-
-//   CustomtextField({
-//   this.hinttext,
-//   this.validator,
-//   this.controller,
-//   this.isSecuretext: false,
-//   this.keyboardType : TextInputType.text,
-//   this.isShowsuffixIcon = false,
-//   this.onTap,
-//   this.enabled = true,
-//   this.initvalue,
-//   this.textInputAction = TextInputAction.done,
-//   this.onFieldSubmitted
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return new TextFormField(
-//       autofocus: false,
-//       onFieldSubmitted: onFieldSubmitted,
-//       controller: controller,
-//       keyboardType: keyboardType,
-//       obscureText: isSecuretext,
-//       onTap: onTap,
-//       validator: validator,
-//       autovalidate: false,
-//       enabled: enabled,
-//       textInputAction: textInputAction,
-//       onChanged: (value) {
-//         print('change');
-//       },
-//       initialValue: initvalue,
-//       // inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly],
-//       decoration: InputDecoration(
-//         hintText: hinttext,
-//         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-//         // prefixIcon: Icon(Icons.mail_outline),
-//         suffixIcon: isShowsuffixIcon == true ? Icon(Icons.arrow_drop_down) : null,
-//         // border: UnderlineInputBorder(),
-//         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-//       ),
-//     );
-//   }
-// }

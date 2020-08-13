@@ -8,7 +8,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   List<Widget> children = const <Widget>[];
   bool showBack = true;
   final bool centerTitle = true;
-  final Color bgColor = green;
+  final Color bgColor = primarythemeColor;
   final Color iconColor = white;
   bool showLeadingMenuButton = false;
   Widget leadingWidget;

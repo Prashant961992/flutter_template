@@ -1,8 +1,10 @@
+import 'package:template/ui/registration_screen.dart';
+
 import 'index.dart';
 
 const String loginScreen = '/login';
 const String forgotPasswordScreen = '/forgotPassword';
-const String registerScreen = '/register';
+const String signupscreeen = '/register';
 const String homeScreen = '/home';
 
 class Routes {
@@ -15,6 +17,8 @@ class Routes {
       case homeScreen:
         var data = settings.arguments as HomeScreenArguments;
         return MaterialPageRoute(builder: (_) => HomeScreen(arguments: data));
+      case signupscreeen:
+        return MaterialPageRoute(builder: (_) => RegistrationScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
