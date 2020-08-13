@@ -23,7 +23,6 @@ class ForgotPasswordScreen extends StatelessWidget {
               labelStyle: green16TextStyle(),
               keyboardType: TextInputType.text,
               obscureText: false,
-              showPasswordToggleIcon: false,
               controller: _emailController,
             ),
             SizedBox(height: 16.0),

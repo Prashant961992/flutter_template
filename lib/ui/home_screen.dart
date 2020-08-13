@@ -48,15 +48,6 @@ class HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Welcome"),
-            Text('Flutter files: done'),
-            Padding(
-              padding: const EdgeInsets.only(top: 32.0),
-              child: RaisedButton(
-                color: Colors.red,
-                child: Text('throw error'),
-                onPressed: () => _load(),
-              ),
-            ),
           ],
         ),
       ),

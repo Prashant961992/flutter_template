@@ -133,7 +133,7 @@ class LoginScreenState extends State<LoginScreen> {
                             padding: EdgeInsets.only(
                                 left: left_right_padding,
                                 right: left_right_padding),
-                            child: CustomTextFormField(
+                            child: CustomPasswordTextFormField(
                               controller: _passwordController,
                               label: "Password",
                               keyboardType: TextInputType.text,

@@ -3,14 +3,13 @@ import 'package:flutter/cupertino.dart';
 import '../index.dart';
 
 
-class CustomTextFormField extends StatefulWidget {
+class CustomPasswordTextFormField extends StatefulWidget {
   final String label;
   final TextStyle labelStyle;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-  final bool obscureText;
-  final bool isShowsuffixIcon;
-  final Icon suffixIcon;
+  bool obscureText;
+  final bool showPasswordToggleIcon; // isShowsuffixIcon
   final TextEditingController controller;
   final int maxLines = 1;
   final FormFieldValidator<String> validator;
@@ -21,23 +20,22 @@ class CustomTextFormField extends StatefulWidget {
 //  MaterialColor focusedBorderColor = Colors.blue;
 //  double borderRadius = 8.0;
 
-  CustomTextFormField(
+  CustomPasswordTextFormField(
       {this.label,
       this.labelStyle,
       this.keyboardType,
       this.obscureText = false,
-      this.isShowsuffixIcon = false,
+      this.showPasswordToggleIcon = false,
       this.textInputAction = TextInputAction.done,
       this.onFieldSubmitted,
       this.validator,
-      this.suffixIcon,
       this.controller});
 
   @override
-  _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
+  _CustomPasswordTextFormFieldState createState() => _CustomPasswordTextFormFieldState();
 }
 
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
+class _CustomPasswordTextFormFieldState extends State<CustomPasswordTextFormField> {
   @override
   Widget build(BuildContext context) {
     return new TextFormField(
@@ -55,8 +53,28 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         labelText: widget.label,
         labelStyle: widget.labelStyle,
-//        contentPadding: EdgeInsets.all(widget.contentPadding),suffixIcon Icon(Icons.arrow_drop_down)
-        suffixIcon: widget.isShowsuffixIcon == true ? widget.suffixIcon : null,
+//        contentPadding: EdgeInsets.all(widget.contentPadding),
+        suffixIcon: widget.showPasswordToggleIcon == true
+            ? widget.obscureText == true
+                ? IconButton(
+                    icon: Icon(
+                      Icons.visibility_off,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() => widget.obscureText = !widget.obscureText);
+                    },
+                  )
+                : IconButton(
+                    icon: Icon(
+                      Icons.remove_red_eye,
+                      color: primarythemeColor,
+                    ),
+                    onPressed: () {
+                      setState(() => widget.obscureText = !widget.obscureText);
+                    },
+                  )
+            : null,
 //        enabledBorder: OutlineInputBorder(
 //            borderSide: BorderSide(
 //                width: widget.borderWidth, color: widget.enabledBorderColor),
