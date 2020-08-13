@@ -276,24 +276,24 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   // var listdata = loadAssets(context);
                   // print(listdata);
 
-                  showDialog(
-                    // barrierDismissible: false,
-                    context: context,
-                    builder: (BuildContext context) => FutureBuilder(
-                      future: loadAssets(context),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<List<CountryList>> snapshot) {
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: Text('Loading....'),
-                          );
-                        }
-                        return MultiSelectionAlert(
-                          listCountryData: snapshot.requireData,
-                        );
-                      },
-                    ),
-                  );
+                  // showDialog(
+                  //   // barrierDismissible: false,
+                  //   context: context,
+                  //   builder: (BuildContext context) => FutureBuilder(
+                  //     future: loadAssets(context),
+                  //     builder: (BuildContext context,
+                  //         AsyncSnapshot<List<CountryList>> snapshot) {
+                  //       if (!snapshot.hasData) {
+                  //         return Center(
+                  //           child: Text('Loading....'),
+                  //         );
+                  //       }
+                  //       return MultiSelectionAlert(
+                  //         listCountryData: snapshot.requireData,
+                  //       );
+                  //     },
+                  //   ),
+                  // );
                 },
                 child: IgnorePointer(
                   child: city,

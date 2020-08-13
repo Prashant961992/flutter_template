@@ -34,25 +34,33 @@ class _MultiSelectionAlertState extends State<MultiSelectionAlert> {
   }
 
   Widget loadData(List<CountryList> datas) {
-    return Dialog(
+    return AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(padding),
       ),
       elevation: 1.0,
       backgroundColor: Colors.transparent,
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            header('What is Lorem Ipsum?'),
-            _buildSearchField(),
-            Flexible(
-                // flex: 7,
-                child: Container(
-                  height: MediaQuery.of(context)
-                      .size
-                      .height, // Change as per your requirement
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.white,
+      content: Builder(
+        builder: (context) {
+          var height = MediaQuery.of(context).size.height;
+          var width = MediaQuery.of(context).size.width;
+          return Container(
+            height: height,
+            width: width,
+            child: Column(
+              children: <Widget>[
+                header('What is Lorem Ipsum?'),
+                _buildSearchField(),
+                Flexible(
+                    // flex: 7,
+                    child: SizedBox(
+                 width: double.infinity,
+                 height: double.infinity,
+                  // height: MediaQuery.of(context)
+                  //     .size
+                  //     .height, // Change as per your requirement
+                  // width: MediaQuery.of(context).size.width,
+                  // color: Colors.white,
                   child: ListView.builder(
                     shrinkWrap: true,
                     // physics: ClampingScrollPhysics(),
@@ -90,9 +98,11 @@ class _MultiSelectionAlertState extends State<MultiSelectionAlert> {
                     },
                   ),
                 )),
-            footer()
-          ],
-        ),
+                footer()
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -101,79 +111,78 @@ class _MultiSelectionAlertState extends State<MultiSelectionAlert> {
     return Flexible(
         // flex: 1,
         child: Container(
-          color: Colors.blueAccent,
-          child: Row(
-            children: <Widget>[
-              SizedBox(width: 5),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Icon(Icons.close, color: Colors.white),
-                  ),
-                ),
+      color: Colors.blueAccent,
+      child: Row(
+        children: <Widget>[
+          SizedBox(width: 5),
+          Expanded(
+            flex: 1,
+            child: Container(
+              height: 50,
+              width: 50,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Icon(Icons.close, color: Colors.white),
               ),
-              SizedBox(width: 5),
-              Expanded(
-                flex: 9,
-                child: SingleChildScrollView(
-                  child: Text(title, style: TextStyle(color: Colors.white)),
-                ),
-              )
-            ],
+            ),
           ),
-        ));
+          SizedBox(width: 5),
+          Expanded(
+            flex: 9,
+            child: SingleChildScrollView(
+              child: Text(title, style: TextStyle(color: Colors.white)),
+            ),
+          )
+        ],
+      ),
+    ));
   }
 
   Widget search() {
     return Flexible(
         // flex: 1,
         child: Container(
-          padding: EdgeInsets.all(10),
-          width: MediaQuery.of(context).size.width,
-          color: Colors.white,
-          child: new TextField(
-            controller: _searchQuery,
-            autofocus: true,
-            decoration: const InputDecoration(
-              hintText: 'Search...',
-              border: InputBorder.none,
-              hintStyle: const TextStyle(color: Colors.white30),
-            ),
-            style: const TextStyle(color: Colors.white, fontSize: 16.0),
-            onChanged: updateSearchQuery,
-          ),
-        ));
+      padding: EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      child: new TextField(
+        controller: _searchQuery,
+        autofocus: true,
+        decoration: const InputDecoration(
+          hintText: 'Search...',
+          border: InputBorder.none,
+          hintStyle: const TextStyle(color: Colors.white30),
+        ),
+        style: const TextStyle(color: Colors.white, fontSize: 16.0),
+        onChanged: updateSearchQuery,
+      ),
+    ));
   }
 
   Widget _buildSearchField() {
     return Expanded(
         // flex: 1,
         child: Container(
-          padding: EdgeInsets.all(10),
-          width: MediaQuery.of(context).size.width,
-          color: Colors.white,
-          child: new TextFormField(
-            controller: _searchQuery,
-            autofocus: true,
-            decoration: InputDecoration(
-              hintText: 'Search...',
-              contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              // prefixIcon: Icon(Icons.mail_outline),
-              // suffixIcon: widget.isShowsuffixIcon == true ? Icon(Icons.arrow_drop_down) : null,
-              // border: UnderlineInputBorder(),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-            ),
-            style: const TextStyle(color: Colors.black, fontSize: 16.0),
-            onChanged: updateSearchQuery,
-          ),
-        ));
+      padding: EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      child: new TextFormField(
+        controller: _searchQuery,
+        autofocus: true,
+        decoration: InputDecoration(
+          hintText: 'Search...',
+          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          // prefixIcon: Icon(Icons.mail_outline),
+          // suffixIcon: widget.isShowsuffixIcon == true ? Icon(Icons.arrow_drop_down) : null,
+          // border: UnderlineInputBorder(),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+        ),
+        style: const TextStyle(color: Colors.black, fontSize: 16.0),
+        onChanged: updateSearchQuery,
+      ),
+    ));
   }
 
   void updateSearchQuery(String newQuery) {
@@ -228,44 +237,43 @@ class _MultiSelectionAlertState extends State<MultiSelectionAlert> {
     return Flexible(
         // flex: 1,
         child: Container(
-          color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              SizedBox(width: 10),
-              Expanded(
-                flex: 5,
-                child: FlatButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child:
-                      Text('Cancel', style: TextStyle(color: Colors.blueGrey)),
-                  textColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                          color: Colors.blueGrey,
-                          width: 1,
-                          style: BorderStyle.solid),
-                      borderRadius: BorderRadius.circular(50)),
-                ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                flex: 5,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  onPressed: () {
-                    // widget.onItemSelected(1);
-                  },
-                  color: Colors.lightBlueAccent,
-                  child: Text('Submit', style: TextStyle(color: Colors.white)),
-                ),
-              ),
-              SizedBox(width: 10),
-            ],
+      color: Colors.white,
+      child: Row(
+        children: <Widget>[
+          SizedBox(width: 10),
+          Expanded(
+            flex: 5,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel', style: TextStyle(color: Colors.blueGrey)),
+              textColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: Colors.blueGrey,
+                      width: 1,
+                      style: BorderStyle.solid),
+                  borderRadius: BorderRadius.circular(50)),
+            ),
           ),
-        ));
+          SizedBox(width: 10),
+          Expanded(
+            flex: 5,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              onPressed: () {
+                // widget.onItemSelected(1);
+              },
+              color: Colors.lightBlueAccent,
+              child: Text('Submit', style: TextStyle(color: Colors.white)),
+            ),
+          ),
+          SizedBox(width: 10),
+        ],
+      ),
+    ));
   }
 }
