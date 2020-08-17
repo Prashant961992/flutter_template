@@ -1,6 +1,8 @@
-// import 'dart:async';
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
 
 enum HTTPMethod { GET, POST, PUT, DELETE }
 
@@ -38,6 +40,7 @@ class ApiProvider {
     try {
       final response =
           await dio.request(url, data: request != null ? request : null);
+      print(response.data);
       responseJson = response.data;
     } on DioError catch (e) {
       if (e.type == DioErrorType.CONNECT_TIMEOUT) {
@@ -80,6 +83,133 @@ class ApiProvider {
         }
       }
     }
+    return responseJson;
+  }
+
+  ///Upload method using Dio
+  Future<dynamic> upload(
+      String url, Map<String, dynamic> request, String imagePath) async {
+    var responseJson;
+    Dio dio = Dio();
+
+    try {
+      String filename = imagePath.split('/').last;
+      FormData formData = new FormData.fromMap({
+        'upload': await MultipartFile.fromFile(imagePath,
+            filename: filename, contentType: MediaType('image', 'jpg')),
+        'type': 'image/*',
+        'uploadDto': jsonEncode(request)
+      });
+      Response response = await dio.post('https://' + _baseUrlhttps + url,
+          data: formData, onSendProgress: (int sent, int total) {
+        print("$sent $total");
+      },
+          options: Options(headers: {
+            'accept': 'application/json',
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'multipart/form-data'
+          }));
+      print(response.data);
+      responseJson = response.data;
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
+        print("DioErrorType Connect Timeout");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw ConnectionTimeoutException(e.message);
+      } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
+        ///It occurs when receiving timeout.
+        print("DioErrorType Received Timeout");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw ReceiveTimeoutException(e.message);
+      } else if (e.type == DioErrorType.RESPONSE) {
+        /// When the server response, but with a incorrect status, such as 404, 503...
+        print("DioErrorType Response");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw BadRequestException(e.message);
+      } else if (e.type == DioErrorType.CANCEL) {
+        /// When the request is cancelled, dio will throw a error with this type.
+        print("DioErrorType Cancel");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw CancelException('Request is cancelled');
+      } else {
+        /// Default error type, Some other Error. In this case, you can
+        /// read the DioError.error if it is not null.
+        print("DioErrorType Default");
+        print(e.request);
+        print(e.message);
+        if (e.response == null) {
+          throw DefaultException('No Internet connection');
+        } else {
+          throw DefaultException('Default_Exception_Message');
+        }
+      }
+    }
+
+    return responseJson;
+  }
+
+  Future<dynamic> download(
+      String url,String savePath) async {
+    var responseJson;
+    Dio dio = Dio();
+
+    try {
+      Response response = await dio.download(_baseUrlhttps + url,savePath, onReceiveProgress: (count, total) {
+        print("$count $total");
+      }
+      );
+      print(response.data);
+      responseJson = response.data;
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
+        print("DioErrorType Connect Timeout");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw ConnectionTimeoutException(e.message);
+      } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
+        ///It occurs when receiving timeout.
+        print("DioErrorType Received Timeout");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw ReceiveTimeoutException(e.message);
+      } else if (e.type == DioErrorType.RESPONSE) {
+        /// When the server response, but with a incorrect status, such as 404, 503...
+        print("DioErrorType Response");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw BadRequestException(e.message);
+      } else if (e.type == DioErrorType.CANCEL) {
+        /// When the request is cancelled, dio will throw a error with this type.
+        print("DioErrorType Cancel");
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
+        throw CancelException('Request is cancelled');
+      } else {
+        /// Default error type, Some other Error. In this case, you can
+        /// read the DioError.error if it is not null.
+        print("DioErrorType Default");
+        print(e.request);
+        print(e.message);
+        if (e.response == null) {
+          throw DefaultException('No Internet connection');
+        } else {
+          throw DefaultException('Default_Exception_Message');
+        }
+      }
+    }
+
     return responseJson;
   }
 }
