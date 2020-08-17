@@ -29,31 +29,15 @@ class LoginScreenState extends State<LoginScreen> {
         hideProgressDialog(context);
         print(state.messageId);
         // print(AppLocalizations.of(context).translate(state.messageId));
-        showToast(
-            context, state.messageId);
+        showToast(context, state.messageId);
       } else if (state.status == ApiStatus.SUCCESS) {
         hideProgressDialog(context);
-        print("response: ${state.response.userState}");
-        if (state.response.userState == ApiErrorState().invalid) {
-          showToast(
-              context,
-              AppLocalizations.of(context)
-                  .translate('username_or_password_incorrect'));
-        } else {
-          print("success response: ${state.response.password}");
-          AppManager.instance.sharedPreferenceRepository.saveLoggedIn(true);
-          if (rememberMe) {
-            AppManager.instance.sharedPreferenceRepository
-                .saveLoginResponse(state.response);
-          }
-          init();
-          // Navigator.pushNamed(context, homeScreen,arguments: 
-          // HomeScreenArguments(
-          //   title: "CC",
-          //   message: "Lorem ipsum",
-          // ));
-          // Navigator.pushReplacementNamed(context, getRoute(Routes.my_team));
+        AppManager.instance.sharedPreferenceRepository.saveLoggedIn(true);
+        if (rememberMe) {
+          AppManager.instance.sharedPreferenceRepository
+              .saveLoginResponse(state.response);
         }
+        init();
       }
     });
   }
@@ -208,7 +192,7 @@ class LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  
+
   void onForgotPwdPressed(BuildContext context) {
     Navigator.pushNamed(context, forgotPasswordScreen);
   }
