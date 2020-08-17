@@ -33,6 +33,7 @@ dependencies:
   shared_preferences: ^0.5.8
   fluttertoast: ^7.0.2
   rxdart: ^0.24.1
+  dio: ^3.0.10
 
 dev_dependencies:
   flutter_test:

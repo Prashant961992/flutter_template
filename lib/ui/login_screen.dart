@@ -28,9 +28,9 @@ class LoginScreenState extends State<LoginScreen> {
       } else if (state.status == ApiStatus.FAIL) {
         hideProgressDialog(context);
         print(state.messageId);
-        print(AppLocalizations.of(context).translate(state.messageId));
+        // print(AppLocalizations.of(context).translate(state.messageId));
         showToast(
-            context, AppLocalizations.of(context).translate(state.messageId));
+            context, state.messageId);
       } else if (state.status == ApiStatus.SUCCESS) {
         hideProgressDialog(context);
         print("response: ${state.response.userState}");
@@ -231,8 +231,8 @@ class LoginScreenState extends State<LoginScreen> {
       showToast(context,
           AppLocalizations.of(context).translate('blank_password_error_msg'));
     } else {
-      String base64Password = convertStringToBase64(password);
-      _loginBloc.login(username, base64Password);
+      // String base64Password = convertStringToBase64(password);
+      _loginBloc.login(username, password);
     }
   }
 }

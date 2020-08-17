@@ -11,7 +11,10 @@ class LoginBloc {
 
     try {
       LoginRequest request = LoginRequest();
-      request.username = username;
+      request.rememberMe = true;
+      request.clientType = 0;
+      request.deviceId = DateTime.now().millisecondsSinceEpoch.toString();
+      request.email = username;
       request.password = base64Password;
 
       LoginResponse loginResponse =

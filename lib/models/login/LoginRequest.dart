@@ -1,26 +1,32 @@
-import '../../index.dart';
-
-LoginRequest loginRequestFromJson(String str) =>
-    LoginRequest.fromJson(json.decode(str));
-
-String loginRequestToJson(LoginRequest data) => json.encode(data.toJson());
-
 class LoginRequest {
-  LoginRequest({
-    this.username,
-    this.password,
-  });
-
-  String username;
+  String email;
   String password;
+  int clientType;
+  String deviceId;
+  bool rememberMe;
 
-  factory LoginRequest.fromJson(Map<String, String> json) => LoginRequest(
-        username: json["username"],
-        password: json["password"],
-      );
+  LoginRequest(
+      {this.email,
+      this.password,
+      this.clientType,
+      this.deviceId,
+      this.rememberMe});
 
-  Map<String, String> toJson() => {
-        "username": username,
-        "password": password,
-      };
+  LoginRequest.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+    password = json['password'];
+    clientType = json['clientType'];
+    deviceId = json['deviceId'];
+    rememberMe = json['rememberMe'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = this.email;
+    data['password'] = this.password;
+    data['clientType'] = this.clientType;
+    data['deviceId'] = this.deviceId;
+    data['rememberMe'] = this.rememberMe;
+    return data;
+  }
 }

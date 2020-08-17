@@ -1,77 +1,68 @@
-import '../../index.dart';
-
-LoginResponse loginResponseFromJson(String str) => LoginResponse.fromJson(json.decode(str));
-
-String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
-
 class LoginResponse {
-  LoginResponse({
-    this.playerID,
-    this.teamId,
-    this.firstName,
-    this.lastName,
-    this.grade,
-    this.position,
-    this.mode,
-    this.sport,
-    this.pEmail,
-    this.userName,
-    this.password,
-    this.userLevel,
-    this.userState,
-    this.auth,
-    this.teams,
-  });
+  Data data;
+  int entityCode;
+  int eventCode;
+  String eventMessageId;
 
-  String playerID;
-  String teamId;
-  String firstName;
-  String lastName;
-  String grade;
-  String position;
-  String mode;
-  String sport;
-  String pEmail;
-  String userName;
-  String password;
-  int userLevel;
-  String userState;
-  String auth;
-  String teams;
+  LoginResponse(
+      {this.data, this.entityCode, this.eventCode, this.eventMessageId});
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
-    playerID: json["PlayerID"],
-    teamId: json["TeamID"],
-    firstName: json["FirstName"],
-    lastName: json["LastName"],
-    grade: json["Grade"],
-    position: json["Position"],
-    mode: json["Mode"],
-    sport: json["Sport"],
-    pEmail: json["PEmail"],
-    userName: json["UserName"],
-    password: json["Password"],
-    userLevel: json["UserLevel"],
-    userState: json["UserState"],
-    auth: json["auth"],
-    teams: json["teams"],
-  );
+  LoginResponse.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    entityCode = json['entityCode'];
+    eventCode = json['eventCode'];
+    eventMessageId = json['eventMessageId'];
+  }
 
-  Map<String, dynamic> toJson() => {
-    "PlayerID": playerID,
-    "TeamID": teamId,
-    "FirstName": firstName,
-    "LastName": lastName,
-    "Grade": grade,
-    "Position": position,
-    "Mode": mode,
-    "Sport": sport,
-    "PEmail": pEmail,
-    "UserName": userName,
-    "Password": password,
-    "UserLevel": userLevel,
-    "UserState": userState,
-    "auth": auth,
-    "teams": teams,
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
+    }
+    data['entityCode'] = this.entityCode;
+    data['eventCode'] = this.eventCode;
+    data['eventMessageId'] = this.eventMessageId;
+    return data;
+  }
+}
+
+class Data {
+  String id;
+  int expiresIn;
+  int expiration;
+  int tenantId;
+  int propertyId;
+  String accessToken;
+  String refreshToken;
+
+  Data(
+      {this.id,
+      this.expiresIn,
+      this.expiration,
+      this.tenantId,
+      this.propertyId,
+      this.accessToken,
+      this.refreshToken});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    expiresIn = json['expires_in'];
+    expiration = json['expiration'];
+    tenantId = json['tenantId'];
+    propertyId = json['propertyId'];
+    accessToken = json['access_token'];
+    refreshToken = json['refresh_token'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['expires_in'] = this.expiresIn;
+    data['expiration'] = this.expiration;
+    data['tenantId'] = this.tenantId;
+    data['propertyId'] = this.propertyId;
+    data['access_token'] = this.accessToken;
+    data['refresh_token'] = this.refreshToken;
+    return data;
+  }
 }
